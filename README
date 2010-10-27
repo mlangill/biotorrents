@@ -1,0 +1,21 @@
+
+Please see the manuscript by Langille et al. in Plos One: http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0010071
+
+####Dependencies####
+
+Assuming site is being installed on a standard LAMP (Linux Apache MySQL PHP) machine, the only other modules needed are:
+php5-gd
+sendmail
+
+####Install####
+
+*insert ALL sql files (in the SQL folder) into MySQL starting with tb.sql first.
+
+*move "include/secrets.php.sample" to "include/secrets.php" and fill in account information for your mysql database.
+
+*edit config.php to fit your url
+
+*visit the website and sign up for an account
+
+
+

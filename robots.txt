@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /include/
+Disallow: /pic/
+Disallow: /SQL/
+Disallow: /torrents/

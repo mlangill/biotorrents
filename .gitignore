@@ -1,0 +1,4 @@
+logs/*
+include/secrets.php
+torrents/*.torrent
+bitbucket/*
