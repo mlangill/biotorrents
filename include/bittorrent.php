@@ -355,7 +355,7 @@ print StatusBar();
 
 <?php if ($CURUSER && $CURUSER['id'] != 4) { ?>
 <div class="tb-top-left-link">
-<a href='index.php'>Home</a>
+<a href='about.php'>About</a>
 <a href='browse.php'>Browse</a>
 <a href='upload.php'>Upload</a>
 <a href='forums.php'>Forums</a>
@@ -371,7 +371,7 @@ print StatusBar();
 </div>
 <?php } else { ?>
 <div class="tb-top-left-link">
-<a href='index.php'>Home</a>
+<a href='about.php'>About</a>
 <a href='browse.php'>Browse</a>
 <a href='upload.php'>Upload</a>
 <a href='forums.php'>Forums</a>
