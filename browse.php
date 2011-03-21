@@ -199,3 +199,12 @@ else {
 stdfoot();
 
 ?>
+
+<!-- Site Meter -->
+<script type="text/javascript" src="http://s27.sitemeter.com/js/counter.js?site=s27biotorrents">
+</script>
+<noscript>
+<a href="http://s27.sitemeter.com/stats.asp?site=s27biotorrents" target="_top">
+<img src="http://s27.sitemeter.com/meter.asp?site=s27biotorrents" alt="Site Meter" border="0"/></a>
+</noscript>
+<!-- Copyright (c)2009 Site Meter -->
