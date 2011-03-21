@@ -21,6 +21,22 @@ $unverified = number_format(get_row_count("users", "WHERE status='pending'"));
 $torrents = number_format(get_row_count("torrents"));
 //$dead = number_format(get_row_count("torrents", "WHERE visible='no'"));
 
+//new biotorrents website metrics
+$r = mysql_query("SELECT sum(times_completed) FROM torrents") or sqlerr(__FILE__, __LINE__);
+$a = mysql_fetch_row($r);
+$downloads = 0 + $a[0];
+
+$r = mysql_query("SELECT sum(times_completed*size) FROM torrents") or sqlerr(__FILE__, __LINE__);
+$a = mysql_fetch_row($r);
+$download_size = 0 + $a[0];
+$download_size =mksize($download_size);
+
+$r = mysql_query("SELECT sum(size) FROM torrents") or sqlerr(__FILE__, __LINE__);
+$a = mysql_fetch_row($r);
+$datasets_size = 0 + $a[0];
+$datasets_size = mksize($datasets_size);
+
+
 $r = mysql_query("SELECT value_u FROM avps WHERE arg='seeders'") or sqlerr(__FILE__, __LINE__);
 $a = mysql_fetch_row($r);
 $seeders = 0 + $a[0];
@@ -97,9 +113,15 @@ if (mysql_num_rows($res) > 0)
 <table width='100%' border='1' cellspacing='0' cellpadding='10'><tr><td align='center'>
 <table class='main' border='1' cellspacing='0' cellpadding='5'>
 <tr><td class='rowhead'>Registered users</td><td align='right'><?php echo $registered?></td></tr>
-<!-- <tr><td class='rowhead'>Unconfirmed users</td><td align=right><?php echo $unverified?></td></tr> -->
-<tr><td class='rowhead'>Torrents</td><td align='right'><?php echo $torrents?></td></tr>
-<?php if (isset($peers)) { ?>
+<!--<tr><td class='rowhead'>Unconfirmed users</td><td align=right><?php echo $unverified?></td></tr> -->
+<tr><td class='rowhead'>Number of datasets</td><td align='right'><?php echo $torrents?></td></tr>
+<tr><td class='rowhead'>Size of datasets</td><td align='right'><?php echo $datasets_size?></td></tr>
+<tr><td class='rowhead'>Completed downloads</td><td align='right'><?php echo $downloads?></td></tr>
+<tr><td class='rowhead'>Total amount of data transferred</td><td align='right'><?php echo $download_size?></td></tr>
+
+<?php //if (isset($peers)) { 
+if(0){
+?>
 <tr><td class='rowhead'>Peers</td><td align='right'><?php echo $peers?></td></tr>
 <tr><td class='rowhead'>Seeders</td><td align='right'><?php echo $seeders?></td></tr>
 <tr><td class='rowhead'>Leechers</td><td align='right'><?php echo $leechers?></td></tr>
