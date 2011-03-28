@@ -330,17 +330,22 @@ pageTracker._trackPageview();
 <body>
 
 <table width='100%' cellspacing='0' cellpadding='0' style='background: transparent'>
-<tr>
+    <tr>
+        <td class='clear'>
+            <div id="logostrip">
+                <a href="<?php echo $BASEURL?>">
+                    <img src="<?php echo $pic_base_url?>logo3.gif" alt='' style="float:left;"/>
+                
+                    <div style="display:table-cell; vertical-align:middle;text-align:left;height:120px;padding-left:3%"> 
+                        <h1 style="font-weight: bolder;"><big><big><big><big>BioTorrents</big></big></big></big></h1>
+                    </div>
+                </a>
 
-<td class='clear'>
-<div id="logostrip">
-<a href="<?php echo $BASEURL?>"><img src="<?php echo $pic_base_url?>logo3.gif" alt='' /></a>
-
-<!--<a href='donate.php'><img src="./pic/x-click-but04.gif" border="0" alt="Make a donation" style='margin-top: 5px' /></a>-->
-</div>
-</td>
-
-</tr></table>
+                <!--<a href='donate.php'><img src="./pic/x-click-but04.gif" border="0" alt="Make a donation" style='margin-top: 5px' /></a>-->
+            </div>
+        </td>
+    </tr>
+</table>
 
 <table class='mainouter' width="100%" border="1" cellspacing="0" cellpadding="10">
 <!-- STATUSBAR -->

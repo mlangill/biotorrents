@@ -15,6 +15,15 @@ background-color: #004E98;
 	padding: 0;
 }
 
+#logostrip a:link, 
+#logostrip  a:visited,
+#logostrip a:hover, 
+#logostrip a:active { 
+    	color: #4a0608; 
+        text-decoration:none;
+        letter-spacing: 0.1em
+}
+
 #submenu{ 
 	border: 1px solid #FFF;
 	border-top: 0;
