@@ -10,19 +10,20 @@
 
 
 
-
+// read existing secrets.php or create new one
 
 
 // check if secrets.php has already been created
-if file_exists("../include/secrets.php") {
+if (file_exists("../include/secrets.php")) {
     // secrets.php exists
     
-    print "Using existing secrets.php";
+    print "Using existing secrets.php \n";
 
     require_once("../include/secrets.php");
 
 } else {
     // secrets.php does not exist
+
 
     // cli options setup
     $longopts  = array(
@@ -35,49 +36,53 @@ if file_exists("../include/secrets.php") {
     // get cli options
     $options = getopt("",$longopts);
 
-    // required parameters for new secrets.php
-    $reqopt = array("user","pass","db");
-    // check for required options
-    foreach ($reqopt as $value) {
-        if (isset($options[$value])) {
+    // use localhost if host is not specified
+    if (!isset($options["host"])) {
+        $options["host"] = "localhost";
+    }
+
+    // database parameters for new secrets.php
+    $dbsec = array("user","pass","db","host");
+    
+    // check if the needed parameters exist
+    foreach ($dbsec as $value) {
+        if (!isset($options[$value])) {
+        // needed parameter missing from cli options
+        // alert user and exit
             print "Value missing: $value \n";
             print "Please specify with: --$value=something \n";
             exit;
         }
     }
 
-    // use localhost if host is not specified
-    if (!isset($options["host"])) {
-        $options["host"] = "localhost";
-    }
-
-    $user = $options["user"];
-    $pass = $options["pass"];
-    $db = $options["db"];
-    $host = $options["host"];
 
     // create new secrets.php from template
     $cmd = "cp ../include/secrets.php.sample ../include/secrets.php";
-    print "Creating new secrets.php from template";
-    $exec($cmd);
-
-
-    // write db info to secrets.php
-    $cmd = "sed -i 's/%%user%%/".$user."/g' ../include/secrets.php";
-    print "Modifying secrets.php with user: $user \n";    
+    print "Creating new secrets.php from template \n";
     exec($cmd);
-    
-    
-    print "Modifying secrets.php with user: $user \n";    
-    
+
+
+
+    // add parameters to secrets.php    
+    foreach ($dbsec as $value) {
+        // edit secrets.php        
+        $cmd = "sed -i 's/%%".$value."%%/".$options[$value]."/g' ../include/secrets.php";
+        print "Editing secrets.php with $value = ".$options[$value]." \n";    
+        exec($cmd);
+        }  
 }
 
 
-    print("User: $user \n");
-    print("Pass: $pass \n");
-    print("DB: $db \n");
-    print("Host: $host \n");
 
+
+    // load secrets.php
+    require_once "../include/secrets.php";
+
+
+    print("User: $mysql_user \n");
+    print("Pass: $mysql_pass \n");
+    print("DB: $mysql_db \n");
+    print("Host: $mysql_host \n");
 
 
 ?>
