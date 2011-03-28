@@ -57,7 +57,9 @@ if ($_SERVER["HTTP_HOST"] == "")
 $BASEURL = "http://" . $_SERVER["HTTP_HOST"]."";
 
 // Set this to your site URL... No ending slash!
-$DEFAULTBASEURL = "http://www.biotorrents.net";
+// For example:
+// $DEFAULTBASEURL = "http://www.biotorrents.net";
+$DEFAULTBASEURL = "%%BASEURL%%";
 
 $BASEURL=$DEFAULTBASEURL;
 
