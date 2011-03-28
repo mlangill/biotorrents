@@ -44,14 +44,45 @@ stdhead("Signup");
 
 <form method="post" action="takesignup.php">
 <table border="1" cellspacing="0" cellpadding="10">
-<tr><td align="right" class="heading">Desired username:</td><td align="left"><input type="text" size="40" name="wantusername" /></td></tr>
-<tr><td align="right" class="heading">Pick a password:</td><td align="left"><input type="password" size="40" name="wantpassword" /></td></tr>
-<tr><td align="right" class="heading">Enter password again:</td><td align="left"><input type="password" size="40" name="passagain" /></td></tr>
-<tr valign="top"><td align="right" class="heading">Email address:</td><td align="left"><input type="text" size="40" name="email" />
-<table width="250" border="0" cellspacing="0" cellpadding="0"><tr><td class="embedded"><font class="small">The email address must be valid.
-You will receive a confirmation email which you need to respond to. The email address won't be publicly shown anywhere.</font></td></tr>
-</table>
-</td></tr>
+<tr>
+    <td align="right" class="heading">Desired username:</td>
+    <td align="left">
+        <input type="text" size="40" name="wantusername" />
+    </td>
+</tr>
+<tr>
+    <td align="right" class="heading">Pick a password:</td>
+    <td align="left">
+        <input type="password" size="40" name="wantpassword" />
+        <table width="250" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="embedded">
+                    <font class="small">Please choose a password 6 digits or longer.</font>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<tr>
+    <td align="right" class="heading">Enter password again:</td>
+    <td align="left">
+        <input type="password" size="40" name="passagain" />
+    </td>
+</tr>
+<tr valign="top">
+    <td align="right" class="heading">Email address:</td>
+    <td align="left">
+        <input type="text" size="40" name="email" />
+        <table width="250" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="embedded">
+                    <font class="small">The email address must be valid.
+You will receive a confirmation email which you need to respond to. The email address won't be publicly shown anywhere.</font>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
 <tr><td align="right" class="heading">Timezone</td><td align="left"><?php echo $time_select; ?></td></tr>
   <tr>
     <td>&nbsp;</td>
