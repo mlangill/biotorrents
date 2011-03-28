@@ -11,8 +11,8 @@
 -- 
 -- Table structure for table `avps`
 -- 
-
-CREATE TABLE IF NOT EXISTS `avps` (
+DROP TABLE IF EXISTS `avps`;
+CREATE TABLE `avps` (
   `arg` varchar(20) character set latin1 collate latin1_general_ci NOT NULL default '',
   `value_s` text character set latin1 collate latin1_general_ci NOT NULL,
   `value_i` int(11) NOT NULL default '0',
@@ -25,8 +25,8 @@ CREATE TABLE IF NOT EXISTS `avps` (
 -- 
 -- Table structure for table `bans`
 -- 
-
-CREATE TABLE IF NOT EXISTS `bans` (
+DROP TABLE IF EXISTS `bans`;
+CREATE TABLE `bans` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `added` int(11) NOT NULL default '0',
   `addedby` int(10) unsigned NOT NULL default '0',
@@ -42,8 +42,8 @@ CREATE TABLE IF NOT EXISTS `bans` (
 -- 
 -- Table structure for table `blocks`
 -- 
-
-CREATE TABLE IF NOT EXISTS `blocks` (
+DROP TABLE IF EXISTS `blocks`;
+CREATE TABLE `blocks` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `userid` int(10) unsigned NOT NULL default '0',
   `blockid` int(10) unsigned NOT NULL default '0',
@@ -56,8 +56,8 @@ CREATE TABLE IF NOT EXISTS `blocks` (
 -- 
 -- Table structure for table `categories`
 -- 
-
-CREATE TABLE IF NOT EXISTS `categories` (
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(30) character set latin1 collate latin1_general_ci NOT NULL default '',
   `image` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `categories` (
 -- 
 -- Table structure for table `comments`
 -- 
-
-CREATE TABLE IF NOT EXISTS `comments` (
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `user` int(10) unsigned NOT NULL default '0',
   `torrent` int(10) unsigned NOT NULL default '0',
@@ -89,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- 
 -- Table structure for table `countries`
 -- 
-
-CREATE TABLE IF NOT EXISTS `countries` (
+DROP TABLE IF EXISTS `countries` (;
+CREATE TABLE `countries` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(50) character set latin1 collate latin1_general_ci default NULL,
   `flagpic` varchar(50) character set latin1 collate latin1_general_ci default NULL,
@@ -102,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `countries` (
 -- 
 -- Table structure for table `files`
 -- 
-
-CREATE TABLE IF NOT EXISTS `files` (
+DROP TABLE IF EXISTS `files`;
+CREATE TABLE `files` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `torrent` int(10) unsigned NOT NULL default '0',
   `filename` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
@@ -118,8 +118,8 @@ CREATE TABLE IF NOT EXISTS `files` (
 -- 
 -- Table structure for table `forums`
 -- 
-
-CREATE TABLE IF NOT EXISTS `forums` (
+DROP TABLE IF EXISTS `forums`;
+CREATE TABLE `forums` (
   `sort` tinyint(3) unsigned NOT NULL default '0',
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(60) character set latin1 collate latin1_general_ci NOT NULL default '',
@@ -137,8 +137,8 @@ CREATE TABLE IF NOT EXISTS `forums` (
 -- 
 -- Table structure for table `friends`
 -- 
-
-CREATE TABLE IF NOT EXISTS `friends` (
+DROP TABLE IF EXISTS `forums`;
+CREATE TABLE `forums` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `userid` int(10) unsigned NOT NULL default '0',
   `friendid` int(10) unsigned NOT NULL default '0',
@@ -151,8 +151,8 @@ CREATE TABLE IF NOT EXISTS `friends` (
 -- 
 -- Table structure for table `messages`
 -- 
-
-CREATE TABLE IF NOT EXISTS `messages` (
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE `messages` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `sender` int(10) unsigned NOT NULL default '0',
   `receiver` int(10) unsigned NOT NULL default '0',
@@ -172,8 +172,8 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- 
 -- Table structure for table `news`
 -- 
-
-CREATE TABLE IF NOT EXISTS `news` (
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `userid` int(11) NOT NULL default '0',
   `added` int(11) NOT NULL default '0',
@@ -187,8 +187,8 @@ CREATE TABLE IF NOT EXISTS `news` (
 -- 
 -- Table structure for table `peers`
 -- 
-
-CREATE TABLE IF NOT EXISTS `peers` (
+DROP TABLE IF EXISTS `peers`;
+CREATE TABLE `peers` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `torrent` int(10) unsigned NOT NULL default '0',
   `passkey` varchar(32) character set latin1 collate latin1_general_ci NOT NULL,
@@ -223,8 +223,8 @@ CREATE TABLE IF NOT EXISTS `peers` (
 -- 
 -- Table structure for table `pmboxes`
 -- 
-
-CREATE TABLE IF NOT EXISTS `pmboxes` (
+DROP TABLE IF EXISTS `pmboxes`;
+CREATE TABLE `pmboxes` (
   `id` int(11) NOT NULL auto_increment,
   `userid` int(11) NOT NULL,
   `boxnumber` tinyint(4) NOT NULL default '2',
@@ -237,8 +237,8 @@ CREATE TABLE IF NOT EXISTS `pmboxes` (
 -- 
 -- Table structure for table `poll_voters`
 -- 
-
-CREATE TABLE IF NOT EXISTS `poll_voters` (
+DROP TABLE IF EXISTS `poll_voters`;
+CREATE TABLE `poll_voters` (
   `vid` int(10) NOT NULL auto_increment,
   `ip_address` varchar(16) NOT NULL default '',
   `vote_date` int(10) NOT NULL default '0',
@@ -253,8 +253,8 @@ CREATE TABLE IF NOT EXISTS `poll_voters` (
 -- 
 -- Table structure for table `pollanswers`
 -- 
-
-CREATE TABLE IF NOT EXISTS `pollanswers` (
+DROP TABLE IF EXISTS `pollanswers`;
+CREATE TABLE `pollanswers` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pollid` int(10) unsigned NOT NULL default '0',
   `userid` int(10) unsigned NOT NULL default '0',
@@ -270,8 +270,8 @@ CREATE TABLE IF NOT EXISTS `pollanswers` (
 -- 
 -- Table structure for table `polls`
 -- 
-
-CREATE TABLE IF NOT EXISTS `polls` (
+DROP TABLE IF EXISTS `polls`;
+CREATE TABLE `polls` (
   `pid` mediumint(8) NOT NULL auto_increment,
   `start_date` int(10) default NULL,
   `choices` text,
@@ -286,8 +286,8 @@ CREATE TABLE IF NOT EXISTS `polls` (
 -- 
 -- Table structure for table `posts`
 -- 
-
-CREATE TABLE IF NOT EXISTS `posts` (
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE `posts` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `topicid` int(10) unsigned NOT NULL default '0',
   `userid` int(10) unsigned NOT NULL default '0',
@@ -306,8 +306,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- 
 -- Table structure for table `readposts`
 -- 
-
-CREATE TABLE IF NOT EXISTS `readposts` (
+DROP TABLE IF EXISTS `readposts`;
+CREATE TABLE `readposts` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `userid` int(10) unsigned NOT NULL default '0',
   `topicid` int(10) unsigned NOT NULL default '0',
@@ -321,8 +321,8 @@ CREATE TABLE IF NOT EXISTS `readposts` (
 -- 
 -- Table structure for table `reputation`
 -- 
-
-CREATE TABLE IF NOT EXISTS `reputation` (
+DROP TABLE IF EXISTS `reputation`;
+CREATE TABLE `reputation` (
   `reputationid` int(11) unsigned NOT NULL auto_increment,
   `reputation` int(10) NOT NULL default '0',
   `whoadded` int(10) NOT NULL default '0',
@@ -342,8 +342,8 @@ CREATE TABLE IF NOT EXISTS `reputation` (
 -- 
 -- Table structure for table `reputationlevel`
 -- 
-
-CREATE TABLE IF NOT EXISTS `reputationlevel` (
+DROP TABLE IF EXISTS `reputationlevel`;
+CREATE TABLE `reputationlevel` (
   `reputationlevelid` int(11) unsigned NOT NULL auto_increment,
   `minimumreputation` int(10) NOT NULL default '0',
   `level` varchar(250) collate utf8_unicode_ci default NULL,
@@ -356,8 +356,8 @@ CREATE TABLE IF NOT EXISTS `reputationlevel` (
 -- 
 -- Table structure for table `searchcloud`
 -- 
-
-CREATE TABLE IF NOT EXISTS `searchcloud` (
+DROP TABLE IF EXISTS `searchcloud`;
+CREATE TABLE `searchcloud` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `searchedfor` varchar(50) NOT NULL,
   `howmuch` int(10) NOT NULL,
@@ -370,8 +370,8 @@ CREATE TABLE IF NOT EXISTS `searchcloud` (
 -- 
 -- Table structure for table `sitelog`
 -- 
-
-CREATE TABLE IF NOT EXISTS `sitelog` (
+DROP TABLE IF EXISTS `sitelog`;
+CREATE TABLE `sitelog` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `added` int(11) NOT NULL default '0',
   `txt` text character set latin1 collate latin1_general_ci,
@@ -384,8 +384,8 @@ CREATE TABLE IF NOT EXISTS `sitelog` (
 -- 
 -- Table structure for table `stylesheets`
 -- 
-
-CREATE TABLE IF NOT EXISTS `stylesheets` (
+DROP TABLE IF EXISTS `stylesheets`;
+CREATE TABLE `stylesheets` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `uri` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
   `name` varchar(64) character set latin1 collate latin1_general_ci NOT NULL default '',
@@ -397,8 +397,8 @@ CREATE TABLE IF NOT EXISTS `stylesheets` (
 -- 
 -- Table structure for table `topics`
 -- 
-
-CREATE TABLE IF NOT EXISTS `topics` (
+DROP TABLE IF EXISTS `topics`;
+CREATE TABLE `topics` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `userid` int(10) unsigned NOT NULL default '0',
   `subject` varchar(40) character set latin1 collate latin1_general_ci default NULL,
@@ -419,8 +419,8 @@ CREATE TABLE IF NOT EXISTS `topics` (
 -- 
 -- Table structure for table `torrents`
 -- 
-
-CREATE TABLE IF NOT EXISTS `torrents` (
+DROP TABLE IF EXISTS `torrents`;
+CREATE TABLE `torrents` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `info_hash` varchar(20) character set latin1 collate latin1_bin NOT NULL default '',
   `name` varchar(255) character set latin1 collate latin1_general_ci NOT NULL default '',
@@ -461,8 +461,8 @@ CREATE TABLE IF NOT EXISTS `torrents` (
 -- 
 -- Table structure for table `users`
 -- 
-
-CREATE TABLE IF NOT EXISTS `users` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `username` varchar(40) character set latin1 collate latin1_general_ci NOT NULL default '',
   `passhash` varchar(32) character set latin1 collate latin1_general_ci NOT NULL default '',
