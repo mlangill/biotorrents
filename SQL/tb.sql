@@ -89,7 +89,7 @@ CREATE TABLE `comments` (
 -- 
 -- Table structure for table `countries`
 -- 
-DROP TABLE IF EXISTS `countries` (;
+DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `name` varchar(50) character set latin1 collate latin1_general_ci default NULL,
