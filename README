@@ -18,4 +18,27 @@ sendmail
 *visit the website and sign up for an account
 
 
+###Installation Script###
 
+This script creates the needed secret.php and config.php files with user supplied values and performs the initial database import.
+
+*Warning: Do not run on existing site
+
+*First create the MySQL database
+
+*Then change to scripts directory
+ cd scripts
+ 
+*Run install.php using your desired settings
+
+*Command line options
+ php install.php --user=USER --pass=PASS --db=DATABASE --host=HOSTNAME --baseurl=URL
+ 
+*Replace USER and PASS with the MySQL user and password, DATABASE with the name of the MySQL database, and optionally the HOSTNAME of the MySQL server if other than localhost.
+ 
+For example:
+ --baseurl=http://www.biotorrents.net
+
+*Visit the website and sign up for an account
+
+*Values will be loaded from secrets.php and config.php they already exist

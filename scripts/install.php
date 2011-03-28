@@ -1,17 +1,9 @@
 <?php
 
-// first create database
-// then run this script
-
-// example usage 
-
-// php install.php --user=mysqluser --pass=mysqlpass --db=somemysqldb --host=mysql.example.com --baseurl=example.com
-
-// tries to read existing secrets.php if found
-
+// creates secret.php and config.php with user supplied values and performs initial database import
+// see README for usage
 
 print "\n";
-
 
 // cli options setup
 $longopts  = array(
