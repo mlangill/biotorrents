@@ -315,7 +315,7 @@ if($_SERVER['QUERY_STRING']){
 			<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 			<link rel="alternate" type="application/rss+xml" title="RSS"
       href="http://biotorrents.net/rss.php<?php echo $rss_query?>"
-			<title><?php echo  $title ?></title>
+			<title></title>
 			<link rel="stylesheet" href="<?php echo $stylesheet?>" type="text/css" />
 		</head>
 <script type="text/javascript">
@@ -334,7 +334,7 @@ pageTracker._trackPageview();
 
 <td class='clear'>
 <div id="logostrip">
-<img src="<?php echo $pic_base_url?>logo3.gif" alt='' />
+<a href="<?php echo $BASEURL?>"><img src="<?php echo $pic_base_url?>logo3.gif" alt='' /></a>
 
 <!--<a href='donate.php'><img src="./pic/x-click-but04.gif" border="0" alt="Make a donation" style='margin-top: 5px' /></a>-->
 </div>
