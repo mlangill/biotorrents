@@ -9,24 +9,36 @@ sendmail
 
 ####Install####
 
-*insert ALL sql files (in the SQL folder) into MySQL starting with tb.sql first.
+*Insert ALL sql files (in the SQL folder) into MySQL starting with tb.sql first.
 
-*move "include/secrets.php.sample" to "include/secrets.php" and fill in account information for your mysql database.
+*Copy template files and enter your settings
 
-*edit config.php to fit your url
+*Move "include/secrets.php.sample" to "include/secrets.php" and edit:
+ %%USER%%
+  MySQL user with access to database
+ %%PASS%%
+  Password of MySQL user
+ %%HOST%%
+  Database server host, if unsure use: localhost
+ %%DB%%
+  Name of the database
 
-*visit the website and sign up for an account
+*Move "include/config.php.sample" to "include/config.php" and edit:
+ %%BASEURL%%
+  The URL of the website where this code is installed. For example: http://www.biotorrents.com
+
+*Visit the website and sign up for an account
 
 
 ###Installation Script###
 
-This script creates the needed secret.php and config.php files with user supplied values and performs the initial database import.
+A script to set up a new website. It will create the secret.php and config.php files with user supplied values. Then perform initial database import.
 
 *Warning: Do not run on existing site
 
-*First create the MySQL database
+*Requirement: First create the MySQL database
 
-*Then change to scripts directory
+*Change to scripts directory
  cd scripts
  
 *Run install.php using your desired settings
