@@ -315,7 +315,7 @@ if($_SERVER['QUERY_STRING']){
 			<meta name="MSSmartTagsPreventParsing" content="TRUE" />
 			<link rel="alternate" type="application/rss+xml" title="RSS"
       href="http://biotorrents.net/rss.php<?php echo $rss_query?>"
-			<title></title>
+			<title><?php echo  $title ?></title>
 			<link rel="stylesheet" href="<?php echo $stylesheet?>" type="text/css" />
 		</head>
 <script type="text/javascript">
