@@ -19,10 +19,9 @@
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `categories` (
+CREATE TABLE IF NOT EXISTS`categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT '',
   `image` varchar(255) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL DEFAULT '',
