@@ -114,7 +114,17 @@ if (!$row || ($row["banned"] == "yes" && !$moderator))
 //			$s .= " $spacer<$editlink>[Edit torrent]</a>";
 //		tr("Name", $s, 1);
 
-		print("<tr><td class='rowhead_big' width='1%'>Download</td><td width='99%'><a class=\"biglink\" href=\"download.php/$id/" . rawurlencode($row["filename"]) . "\">" . htmlspecialchars($row["filename"]) . "</a></td></tr>");
+        $download_href = "download.php/$id/" . rawurlencode($row["filename"]);
+
+		print('<tr><td class="rowhead_big" width="1%">Download</td><td width="99%"><a class="biglink" href="'
+		.$download_href
+		.'">'
+		. htmlspecialchars($row["filename"])
+		. "</a>"
+		. '<a href="http://www.bitlet.org?torrent='
+		. "$BASEURL/$download_href"
+		. '" style="color: #666; font-weight:bold; border: 1px solid #09f; background-color: #fec" >BitLet<span style="color:#09f">.org</span></a>'
+		."</td></tr>");
 
 //		tr("Downloads&nbsp;as", $row["save_as"]);
 
