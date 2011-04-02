@@ -81,8 +81,8 @@ if (file_exists("../include/secrets.php")) {
 
 
     // set up loop for sql import    
-    $cmd = 'for f in tb.sql avps.sql countries.sql searchcloud.sql categories.sql reputationlevel.sql stylesheets.sql; do '
-    . "mysql -u $mysql_user -p$mysql_pass -h $mysql_host $mysql_db < ".'../SQL/$f'
+    $cmd = 'for f in tb avps countries searchcloud categories reputationlevel stylesheets licenses; do '
+    . "mysql -u $mysql_user -p$mysql_pass -h $mysql_host $mysql_db < ".'../SQL/$f.sql'
     . '; done';
 
     // load sql
