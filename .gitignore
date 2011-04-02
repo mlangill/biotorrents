@@ -1,4 +1,5 @@
 logs/*
 include/secrets.php
+include/config.php
 torrents/*.torrent
 bitbucket/*
