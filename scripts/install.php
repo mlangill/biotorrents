@@ -122,18 +122,14 @@ if (file_exists("../include/config.php")) {
             exit;
         }
     }
-
-    
-    
     
     // copy from template
     print "Creating config.php from template \n";
     $cmd = "cp ../include/config.php.sample ../include/config.php";
     exec($cmd);
-}
 
 // add baseurl to config.php
-    print "Adding base url to config.php\n"
+    print "Adding ".$options["baseurl"]." to config.php\n"
         .'$DEFAULTBASEURL = '
         .$options["baseurl"]
         ."\n";
@@ -141,10 +137,8 @@ if (file_exists("../include/config.php")) {
         .addcslashes($options["baseurl"],"/")
         .'/g" ../include/config.php';
     exec($cmd);
-    
+}    
 
-
-
-print "\nInstall complete. Please visit ".$options["baseurl"]." in your browser\n\n";
+print "\nInstall complete.\n\n";
 
 ?>
