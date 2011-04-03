@@ -104,7 +104,7 @@ Please <a class='altlink' href="sendmessage.php?receiver=1">contact us</a> if yo
 <br/>
 <b>Where can I get a copy of the source code?</b><a name="site4" id="site4"></a></b>
 <br/>
-BioTorrents was derived from the <a class='altlink' href='http://www.tbdev.net/'>TBDev.net</a> source code. The BioTorrents.net source code is available under the GNU GPL on the <a class='altlink' href="browse.php">browse page</a>.   
+The BioTorrents.net source code is available on <a class='altlink' href="https://github.com/mlangill/biotorrents/">GitHub</a>.   
 <br/>
 <br/>
 <b>Is there a manuscript I should reference if I use BioTorrents?</b><a name="site5" id="site5"></a></b>
