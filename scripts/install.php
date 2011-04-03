@@ -5,6 +5,16 @@
 
 print "\n";
 
+
+
+
+
+
+
+
+
+
+
 // cli options setup
 $longopts  = array(
 // all values optional
@@ -22,41 +32,38 @@ if (!isset($options["host"])) {
     $options["host"] = "localhost";
 }
 
-// needed options
-// all needed options
-$optlist = array("user","pass","db","host","baseurl");
-// options needed for secret.php
-$seclist = array("user","pass","db","host");
 
-// check if the needed options exist
-foreach ($optlist as $value) {
-    if (!isset($options[$value])) {
-    // needed parameter missing from cli options
-    // alert user and exit
-        print "Value missing: $value \n";
-        print "Please specify with: --$value=something \n";
-        exit;
-    }
-}
+
+
+
+
 
 // read existing secrets.php or create new one
 // check if secrets.php has already been created
 if (file_exists("../include/secrets.php")) {
     // secrets.php exists
-    
     print "Using existing secrets.php \n";
-
-    require_once("../include/secrets.php");
-
 } else {
     // secrets.php does not exist
 
-    // create new secrets.php from template
+    // options needed for secrets.php
+    $seclist = array("user","pass","db","host");
+
+    // check if the needed options exist
+    foreach ($seclist as $value) {
+        if (!isset($options[$value])) {
+        // needed parameter missing from cli options
+        // alert user and exit
+            print "Option missing: $value \n";
+            print "Please specify with: --$value=something \n";
+            exit;
+        }
+    }
+
+    // create new secrets.php from template using
     $cmd = "cp ../include/secrets.php.sample ../include/secrets.php";
     print "Creating new secrets.php from template \n";
     exec($cmd);
-
-
 
     // add parameters to secrets.php    
     print "Adding parameters to secrets.php\n";
@@ -68,26 +75,27 @@ if (file_exists("../include/secrets.php")) {
 }
 
 
+// load secrets.php
+require_once "../include/secrets.php";
+print "Successfully loaded secrets.php\n";
 
-    // load secrets.php
-    require_once "../include/secrets.php";
+print("User: $mysql_user \n");
+print("Pass: $mysql_pass \n");
+print("DB: $mysql_db \n");
+print("Host: $mysql_host \n");
 
-
-    print("User: $mysql_user \n");
-    print("Pass: $mysql_pass \n");
-    print("DB: $mysql_db \n");
-    print("Host: $mysql_host \n");
-
-
-
-    // set up loop for sql import    
-    $cmd = 'for f in tb avps countries searchcloud categories reputationlevel stylesheets licenses; do '
-    . "mysql -u $mysql_user -p$mysql_pass -h $mysql_host $mysql_db < ".'../SQL/$f.sql'
+// set up loop for sql import    
+$cmd = 'for f in tb avps countries searchcloud categories reputationlevel stylesheets licenses; do '
+    . "mysql -u $mysql_user -p$mysql_pass -h $mysql_host $mysql_db < "
+    .'../SQL/$f.sql'
     . '; done';
 
-    // load sql
-    print "Loading SQL statemnts\n";
-    exec($cmd);
+// load sql
+print "Loading SQL statemnts\n";
+exec($cmd);
+
+
+
 
 
 
@@ -97,18 +105,31 @@ if (file_exists("../include/secrets.php")) {
 if (file_exists("../include/config.php")) {
     // config.php exists
     print "Existing config.php found \n";
-
 } else {
     // config.php does not exist
+    
+    
+    // options needed for config.php
+    $conflist = array("baseurl");
+    
+    // check if the needed options exist
+    foreach ($conflist as $value) {
+        if (!isset($options[$value])) {
+        // needed parameter missing from cli options
+        // alert user and exit
+            print "Option missing: $value \n";
+            print "Please specify with: --$value=something \n";
+            exit;
+        }
+    }
+    
     // copy from template
     print "Creating config.php from template \n";
     $cmd = "cp ../include/config.php.sample ../include/config.php";
     exec($cmd);
-   
-}
 
 // add baseurl to config.php
-    print "Adding base url to config.php\n"
+    print "Adding ".$options["baseurl"]." to config.php\n"
         .'$DEFAULTBASEURL = '
         .$options["baseurl"]
         ."\n";
@@ -116,10 +137,8 @@ if (file_exists("../include/config.php")) {
         .addcslashes($options["baseurl"],"/")
         .'/g" ../include/config.php';
     exec($cmd);
-    
+}    
 
-
-
-print "\nInstall complete. Please visit ".$options["baseurl"]." in your browser\n\n";
+print "\nInstall complete.\n\n";
 
 ?>
