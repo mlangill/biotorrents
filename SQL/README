@@ -3,6 +3,7 @@ During install load biotorrents schema for all tables first:
 mysql biotorrents <biotorrents.sql
 
 then load data for individual tables in any order:
+mysql biotorrents <guest_user.sql
 mysql biotorrents <categories.sql
 mysql biotorrents <countries.sql
 mysql biotorrents <licenses.sql
