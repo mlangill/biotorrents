@@ -1,0 +1,24 @@
+####INSTALL#####
+During install load biotorrents schema for all tables first:
+mysql biotorrents <biotorrents.sql
+
+then load data for individual tables in any order:
+mysql biotorrents <categories.sql
+mysql biotorrents <countries.sql
+mysql biotorrents <licenses.sql
+mysql biotorrents <reputationlevel.sql
+mysql biotorrents <searchcloud.sql
+mysql biotorrents <stylesheets.sql
+
+
+####DEVELOPERS####
+These files are created using mysql dump.
+
+Dump schema for all tables:
+mysqldump -d biotorrents >biotorrents.sql
+
+Dump data for individual tables;
+mysqldump --compact --no-create-info biotorrents categories >categories.sql
+mysqldump --compact --no-create-info biotorrents countries >countries.sql
+mysqldump --compact --no-create-info biotorrents licenses >licenses.sql
+etc.
