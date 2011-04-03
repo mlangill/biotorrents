@@ -269,7 +269,7 @@ function parsedescr($d, $html) {
 }
 */
 function stdhead($title = "", $msgalert = true) {
-    global $CURUSER, $SITE_ONLINE, $SITENAME, $pic_base_url, $stylesheet;
+    global $CURUSER, $SITE_ONLINE, $SITENAME, $pic_base_url, $stylesheet, $BASEURL;
 
   if (!$SITE_ONLINE)
     die("Site is down for maintenance, please check back again later... thanks<br>");
