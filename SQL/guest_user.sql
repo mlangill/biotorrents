@@ -1,0 +1,1 @@
+INSERT INTO `users` VALUES (4,'guest','65c22bd4088400d7dd893291e787b026','','','blah@blah.com','confirmed',0,0,0,'','normal',1,NULL,'no','',0,'-8',1,1,'',0,0,0,0,'',0,'','','yes','yes','no','no',0,0,0,0,'yes','no',10);
