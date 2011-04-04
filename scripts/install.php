@@ -85,7 +85,7 @@ print("DB: $mysql_db \n");
 print("Host: $mysql_host \n");
 
 // set up loop for sql import    
-$cmd = 'for f in biotorrents avps countries searchcloud categories reputationlevel stylesheets licenses; do '
+$cmd = 'for f in biotorrents guest_user avps countries searchcloud categories reputationlevel stylesheets licenses; do '
     . "mysql -u $mysql_user -p$mysql_pass -h $mysql_host $mysql_db < "
     .'../SQL/$f.sql'
     . '; done';
