@@ -6,6 +6,7 @@ dbconn();
 
 $res = mysql_query("SELECT COUNT(*) FROM users") or sqlerr(__FILE__, __LINE__);
 $arr = mysql_fetch_row($res);
+$arr[0]--;
 if ($arr[0] >= $maxusers)
 	stderr("Error", "Sorry, user limit reached. Please try again later.");
 
@@ -108,10 +109,15 @@ $secret = mksecret();
 $wantpasshash = md5($secret . $wantpassword . $secret);
 $editsecret = (!$arr[0]?"":mksecret());
 
+if($arr[0]){
 $ret = mysql_query("INSERT INTO users (username, passhash, secret, editsecret, email, status, ". (!$arr[0]?"class, ":"") ."added, time_offset, dst_in_use) VALUES (" .
 		implode(",", array_map("sqlesc", array($wantusername, $wantpasshash, $secret, $editsecret, $email, (!$arr[0]?'confirmed':'pending')))).
 		", ". (!$arr[0]?UC_SYSOP.", ":""). "". time() ." , $time_offset, {$dst_in_use['tm_isdst']})");
-
+}else{
+$ret = mysql_query("INSERT INTO users (id,username, passhash, secret, editsecret, email, status, ". (!$arr[0]?"class, ":"") ."added, time_offset, dst_in_use) 
+     VALUES (1," . implode(",", array_map("sqlesc", array($wantusername, $wantpasshash, $secret, $editsecret, $email, (!$arr[0]?'confirmed':'pending')))).
+		", ". (!$arr[0]?UC_SYSOP.", ":""). "". time() ." , $time_offset, {$dst_in_use['tm_isdst']})");
+}
 if (!$ret) {
 	if (mysql_errno() == 1062)
 		bark("Username already exists!");
