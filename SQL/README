@@ -15,8 +15,8 @@ mysql biotorrents <stylesheets.sql
 ####DEVELOPERS####
 These files are created using mysql dump.
 
-Dump schema for all tables:
-mysqldump -d biotorrents >biotorrents.sql
+Dump schema for all tables (note the sed pipe is needed to remove the auto increment values from the tables):
+mysqldump --no-data biotorrents | sed 's/AUTO_INCREMENT=[0-9]*\b//' > biotorrents.sql
 
 Dump data for individual tables;
 mysqldump --compact --no-create-info biotorrents categories >categories.sql
