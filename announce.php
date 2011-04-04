@@ -17,14 +17,14 @@
 +------------------------------------------------
 */
 ////////////////// GLOBAL VARIABLES ////////////////////////////	
-$TBDEV['baseurl'] = 'http://www.biotorrents.net/biotorrents/';
+$TBDEV['baseurl'] = '%%BASEURL%%';
 $TBDEV['announce_interval'] = 60 * 30;
 define ('UC_VIP', 2);
 // DB setup
-$TBDEV['mysql_host'] = "localhost";
-$TBDEV['mysql_user'] = "biotorrents";
-$TBDEV['mysql_pass'] = "microbedb";
-$TBDEV['mysql_db']   = "biotorrents";
+$TBDEV['mysql_host'] = "%%host%%";
+$TBDEV['mysql_user'] = "%%user%%";
+$TBDEV['mysql_pass'] = "%%pass%%";
+$TBDEV['mysql_db']   = "%%db%%";
 ////////////////// GLOBAL VARIABLES ////////////////////////////
 
 // DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING!!
@@ -33,10 +33,10 @@ $agent = $_SERVER["HTTP_USER_AGENT"];
 
 // Deny access made with a browser...
 if (
-    ereg("^Mozilla\\/", $agent) || 
-    ereg("^Opera\\/", $agent) || 
-    ereg("^Links ", $agent) || 
-    ereg("^Lynx\\/", $agent) || 
+    preg_match("/^Mozilla\\//", $agent) || 
+    preg_match("/^Opera\\//", $agent) || 
+    preg_match("/^Links/", $agent) || 
+    preg_match("/^Lynx\\//", $agent) || 
     isset($_SERVER['HTTP_COOKIE']) || 
     isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) || 
     isset($_SERVER['HTTP_ACCEPT_CHARSET'])
@@ -52,7 +52,7 @@ function dbconn()
     {
 	  err('Please call back later');
     }
-    mysql_select_db($TBDEV['mysql_db']) or err('Please call back later');
+    mysql_select_db($TBDEV['mysql_db']) or err('Please call back later!');
 }
 
 function err($msg)
@@ -166,8 +166,8 @@ function portblacklisted($port)
 /////////////////////// FUNCTION DEFS END ///////////////////////////////
 
 $parts = array();
-$pattern = '[0-9a-fA-F]{32}';
-if( !isset($_GET['passkey']) OR !ereg($pattern, $_GET['passkey'], $parts) ) 
+$pattern = '/[0-9a-fA-F]{32}/';
+if( !isset($_GET['passkey']) OR !preg_match($pattern, $_GET['passkey'], $parts) ) 
 		err("Invalid Passkey");
 	else
 		$GLOBALS['passkey'] = $parts[0];
