@@ -48,7 +48,7 @@ $torrent_dir = ROOT_PATH . '/torrents';
 
 # the first one will be displayed on the pages
 $announce_urls = array();
-$announce_urls[0] = "http://www.biotorrents.net/announce.php";
+$announce_urls[0] = "%%BASEURL%%"."/announce.php";
 $announce_urls[1] = "http://tracker.openbittorrent.com/announce";
 //$announce_urls[] = "http://domain.com:83/announce.php";
 
