@@ -16,15 +16,13 @@
 |   $URL$
 +------------------------------------------------
 */
+
+require_once("include/config.php");
+require_once("include/secrets.php");
+
 ////////////////// GLOBAL VARIABLES ////////////////////////////	
-$TBDEV['baseurl'] = '%%BASEURL%%';
 $TBDEV['announce_interval'] = 60 * 30;
 define ('UC_VIP', 2);
-// DB setup
-$TBDEV['mysql_host'] = "%%host%%";
-$TBDEV['mysql_user'] = "%%user%%";
-$TBDEV['mysql_pass'] = "%%pass%%";
-$TBDEV['mysql_db']   = "%%db%%";
 ////////////////// GLOBAL VARIABLES ////////////////////////////
 
 // DO NOT EDIT BELOW UNLESS YOU KNOW WHAT YOU'RE DOING!!
@@ -46,13 +44,13 @@ if (
 /////////////////////// FUNCTION DEFS ///////////////////////////////////
 function dbconn()
 {
-    global $TBDEV;
+    global $mysql_host, $mysql_user, $mysql_pass, $mysql_db;
 
-    if (!@mysql_connect($TBDEV['mysql_host'], $TBDEV['mysql_user'], $TBDEV['mysql_pass']))
+    if (!@mysql_connect($mysql_host, $mysql_user, $mysql_pass))
     {
 	  err('Please call back later');
     }
-    mysql_select_db($TBDEV['mysql_db']) or err('Please call back later!');
+    mysql_select_db($mysql_db) or err('Please call back later!');
 }
 
 function err($msg)
@@ -231,7 +229,7 @@ $user_query = mysql_query("SELECT id, uploaded, downloaded, class, enabled FROM 
 
 if ( mysql_num_rows($user_query) != 1 )
 
- err("Unknown passkey. Please redownload the torrent from {$TBDEV['baseurl']}.");
+ err("Unknown passkey. Please redownload the torrent from {$BASEURL}.");
  
 	$user = mysql_fetch_assoc($user_query);
 	if( $user['enabled'] == 'no' ) err('Permission denied, you\'re not enabled');
