@@ -192,7 +192,7 @@ INPUT: foreach my $dataset (@input){
 	    
 	}else{
 
-	#seach in gzip tarballs
+	    #seach in gzip tarballs
 	    if($dataset =~ /.*\.(tar.gz)|(tgz)/){
 		my @README = `tar -xzOf $dataset --wildcards --ignore-case *readme*`;
 		if(@README == 0){
@@ -204,6 +204,15 @@ INPUT: foreach my $dataset (@input){
 		#search in bzip tarballs
 	    }elsif($dataset =~ /.*\.(tar.bz2)|(tbz)|(tb2)/){
 		my @README = `tar -xjOf $dataset --wildcards --ignore-case *readme*`;
+		if(@README == 0){
+		    print "No REAMDE file exists or is empty in the dataset: $dataset. Ensure that there is a README file with a description in it or use the -d option.\n";
+		    next INPUT;
+		}
+		$description = join( '', @README );
+
+		#search in non-compressed tarballs
+	    }elsif($dataset =~ /.*\.(tar)/){
+		my @README = `tar -xOf $dataset --wildcards --ignore-case *readme*`;
 		if(@README == 0){
 		    print "No REAMDE file exists or is empty in the dataset: $dataset. Ensure that there is a README file with a description in it or use the -d option.\n";
 		    next INPUT;
